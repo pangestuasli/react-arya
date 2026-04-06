@@ -1,12 +1,21 @@
 import frameworkData from "./framework.json";
 import { useState } from "react";
 
-export default function FrameworkList() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState("");
+export default function FrameworkList() {   
+  const [dataForm, setDataForm] = useState({
+    searchTerm: "",
+    selectedTag: "",
+  });
 
-  const _searchTerm = searchTerm.toLowerCase();
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setDataForm({
+      ...dataForm,
+      [name]: value,
+    });
+  };
 
+  const _searchTerm = dataForm.searchTerm.toLowerCase();
   const allTags = [...new Set(frameworkData.flatMap((fw) => fw.tags))];
 
   const filteredFrameworks = frameworkData.filter((framework) => {
@@ -14,10 +23,9 @@ export default function FrameworkList() {
       framework.name.toLowerCase().includes(_searchTerm) ||
       framework.description.toLowerCase().includes(_searchTerm);
 
-    const matchesTag = selectedTag
-      ? framework.tags.includes(selectedTag)
+    const matchesTag = dataForm.selectedTag
+      ? framework.tags.includes(dataForm.selectedTag)
       : true;
-
     return matchesSearch && matchesTag;
   });
 
@@ -27,14 +35,18 @@ export default function FrameworkList() {
       <div className="mb-6 grid gap-4 md:grid-cols-2">
         <input
           type="text"
+          name="searchTerm"
           placeholder="Search framework..."
           className="w-full p-2 border border-gray-300 rounded"
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={dataForm.searchTerm}
+          onChange={handleChange}
         />
 
         <select
+          name="selectedTag"
           className="w-full p-2 border border-gray-300 rounded"
-          onChange={(e) => setSelectedTag(e.target.value)}
+          value={dataForm.selectedTag}
+          onChange={handleChange}
         >
           <option value="">All Tags</option>
           {allTags.map((tag, index) => (
