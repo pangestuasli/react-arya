@@ -1,16 +1,18 @@
 import DashboardCard from "../components/DashboardCard";
+import PageHeader from "../components/PageHeader"; // ⬅️ tambahin ini
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
 
 export default function Dashboard() {
-    const data = [
-        { icon: <FaShoppingCart />, value: "75", label: "Total Orders" },
-        { icon: <FaTruck />, value: "175", label: "Total Delivered" },
-        { icon: <FaBan />, value: "40", label: "Total Canceled" },
-        { icon: <FaDollarSign />, value: "Rp.128", label: "Total Revenue" },
-    ];
     return (
-        
         <div id="dashboard-container">
+
+            <PageHeader
+                title="Dashboard"
+                breadcrumb={["Home", "Home Detail", "Home Very Detail"]}
+            >
+                <button id="add-button">Add Button</button>
+            </PageHeader>
+
             <div id="dashboard-grid">
                 <div id="dashboard-orders">
                     <div id="orders-icon">
@@ -54,7 +56,7 @@ export default function Dashboard() {
 
                 <div id="dashboard-customers">
                     <div id="customers-icon">
-                        <FaShoppingCart /> 
+                        <FaShoppingCart />
                     </div>
                     <div id="customers-info">
                         <span id="customers-count">320</span>
@@ -62,15 +64,15 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-<div id="dashboard-products">
-    <div id="products-icon">
-        <FaTruck /> 
-    </div>
-    <div id="products-info">
-        <span id="products-count">58</span>
-        <span id="products-text">Total Products</span>
-    </div>
-</div>
+                <div id="dashboard-products">
+                    <div id="products-icon">
+                        <FaTruck />
+                    </div>
+                    <div id="products-info">
+                        <span id="products-count">58</span>
+                        <span id="products-text">Total Products</span>
+                    </div>
+                </div>
             </div>
         </div>
     );
