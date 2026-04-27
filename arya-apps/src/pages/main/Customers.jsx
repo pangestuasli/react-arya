@@ -1,6 +1,6 @@
 import { useState } from "react";
-import customersData from "../data/customers.json";
-import PageHeader from "../components/PageHeader";
+import customersData from "../../data/customers.json";
+import PageHeader from "../../components/PageHeader";
 
 const loyaltyClass = {
     Gold: "bg-yellow-100 text-yellow-700",

@@ -1,5 +1,5 @@
-import DashboardCard from "../components/DashboardCard";
-import PageHeader from "../components/PageHeader"; // ⬅️ tambahin ini
+import DashboardCard from "../../components/DashboardCard";
+import PageHeader from "../../components/PageHeader"; // ⬅️ tambahin ini
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign } from "react-icons/fa";
 
 export default function Dashboard() {

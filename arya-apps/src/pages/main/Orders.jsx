@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ordersData from "../data/orders.json";
-import PageHeader from "../components/PageHeader";
+import ordersData from "../../data/orders.json";
+import PageHeader from "../../components/PageHeader";
 
 const statusClass = {
     Completed: "bg-green-100 text-green-700",
