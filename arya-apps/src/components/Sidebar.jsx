@@ -1,6 +1,7 @@
-import { FaThLarge, FaList, FaHeadphonesAlt, FaChartBar } from "react-icons/fa";
+import { FaThLarge, FaList, FaHeadphonesAlt, FaBox ,FaChartBar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { FaExclamationTriangle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
     const menuClass = ({ isActive }) => {
@@ -49,6 +50,13 @@ export default function Sidebar() {
                         <NavLink id="menu-4" to="/reports" className={menuClass}>
                             <FaChartBar />
                             <span>Reports</span>
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink id="menu-produk" to="/products" className={menuClass}>
+                            <FaBox /> {/* Pastikan FaBox sudah di-import di atas */}
+                            <span>Products</span>
                         </NavLink>
                     </li>
 
