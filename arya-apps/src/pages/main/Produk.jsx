@@ -6,7 +6,6 @@ export default function Produk() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Mengambil 30 data produk dari API DummyJSON
     axios.get("https://dummyjson.com/products?limit=30")
       .then((res) => {
         setProducts(res.data.products);
@@ -30,7 +29,6 @@ export default function Produk() {
           <tbody>
             {products.map((item) => (
               <tr key={item.id} className="border-b hover:bg-gray-50 transition">
-                {/* INI KODE DOSENMU: Link ke Detail */}
                 <td className="p-4">
                   <Link 
                     to={`/products/${item.id}`} 
