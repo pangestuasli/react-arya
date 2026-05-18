@@ -55,7 +55,7 @@ export default function Sidebar() {
 
                     <li>
                         <NavLink id="menu-produk" to="/products" className={menuClass}>
-                            <FaBox /> {/* Pastikan FaBox sudah di-import di atas */}
+                            <FaBox /> 
                             <span>Products</span>
                         </NavLink>
                     </li>
@@ -76,6 +76,11 @@ export default function Sidebar() {
                         <NavLink to="/error-403" className={menuClass}>
                             <FaExclamationTriangle className="mr-4 text-xl" />
                             Error 403
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/components" className={menuClass}>
+                            Components
                         </NavLink>
                     </li>
                 </ul>

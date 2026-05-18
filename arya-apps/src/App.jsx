@@ -14,6 +14,7 @@ const Error401 = React.lazy(() => import("./pages/Error401"));
 const Error403 = React.lazy(() => import("./pages/Error403"));
 const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"))
 const Products = React.lazy(() => import("./pages/main/Produk"))
+const Components = React.lazy(() => import("./pages/main/Components"))
 
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Register = React.lazy(() => import("./pages/auth/Register"));
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/error-400" element={<Error400 />} />
             <Route path="/error-401" element={<Error401 />} />
             <Route path="/error-403" element={<Error403 />} />
+            <Route path="/components" element={<Components />} />
             </Route>
             <Route element={<AuthLayout/>}>
             <Route path="/login" element={<Login />} />
