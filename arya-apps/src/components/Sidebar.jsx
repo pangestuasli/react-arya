@@ -61,6 +61,13 @@ export default function Sidebar() {
                     </li>
 
                     <li>
+                        <NavLink id="menu-fitur-xyz" to="/fitur-xyz" className={menuClass}>
+                            <FaBox />
+                            <span>Fitur XYZ</span>
+                        </NavLink>
+                    </li>
+
+                    <li>
                         <NavLink to="/error-400" className={menuClass}>
                             <FaExclamationTriangle className="mr-4 text-xl" />
                             Error 400
