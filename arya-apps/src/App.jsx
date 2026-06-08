@@ -12,10 +12,11 @@ const NotFound = React.lazy(() => import("./pages/main/NotFound"));
 const Error400 = React.lazy(() => import("./pages/Error400"));
 const Error401 = React.lazy(() => import("./pages/Error401"));
 const Error403 = React.lazy(() => import("./pages/Error403"));
-const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"))
-const Products = React.lazy(() => import("./pages/main/Produk"))
-const Components = React.lazy(() => import("./pages/main/Components"))
-const FiturXyz = React.lazy(() => import("./pages/main/FiturXyz"))
+const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"));
+const Products = React.lazy(() => import("./pages/main/Produk"));
+const Components = React.lazy(() => import("./pages/main/Components"));
+const FiturXyz = React.lazy(() => import("./pages/main/FiturXyz"));
+const Note = React.lazy(() => import("./pages/main/Note"));
 
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Register = React.lazy(() => import("./pages/auth/Register"));
@@ -39,6 +40,8 @@ export default function App() {
             <Route path="/error-403" element={<Error403 />} />
             <Route path="/components" element={<Components />} />
             <Route path="/fitur-xyz" element={<FiturXyz />} />
+            <Route path="/Note" element={<Note />} />
+        
             
             </Route>
             <Route element={<AuthLayout/>}>

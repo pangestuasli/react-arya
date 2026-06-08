@@ -90,6 +90,11 @@ export default function Sidebar() {
                             Components
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink id="menu-Note" to="/Note" className={menuClass}>
+                            Notes
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
 
