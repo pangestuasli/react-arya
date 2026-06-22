@@ -1,12 +1,13 @@
-import axios from "axios";
 import { useState } from "react";
 import { BsFillExclamationDiamondFill } from "react-icons/bs";
 import { ImSpinner2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Login() {
   /* navigate, state & handleChange*/
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [dataForm, setDataForm] = useState({
@@ -27,33 +28,16 @@ export default function Login() {
     e.preventDefault();
 
     setLoading(true);
-    setError(false);
+    setError("");
 
-    axios
-      .post("https://dummyjson.com/user/login", {
-        username: dataForm.email,
-        password: dataForm.password,
-      })
-      .then((response) => {
-        // Jika status bukan 200, tampilkan pesan error
-        if (response.status !== 200) {
-          setError(response.data.message);
-          return;
-        }
-
-        // Redirect ke dashboard jika login sukses
-        navigate("/");
-      })
-      .catch((err) => {
-        if (err.response) {
-          setError(err.response.data.message || "An error occurred");
-        } else {
-          setError(err.message || "An unknown error occurred");
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    try {
+      await login(dataForm.email, dataForm.password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message || "An unknown error occurred");
+    } finally {
+      setLoading(false);
+    }
   };
 
   /* error & loading status */
@@ -90,6 +74,7 @@ export default function Login() {
                             placeholder-gray-400"
             placeholder="you@example.com"
             name="email"
+            value={dataForm.email}
             onChange={handleChange}
           />
         </div>
@@ -104,13 +89,15 @@ export default function Login() {
                             placeholder-gray-400"
             placeholder="********"
             name="password"
+            value={dataForm.password}
             onChange={handleChange}
           />
         </div>
         <button
           type="submit"
+          disabled={loading}
           className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4
-                        rounded-lg transition duration-300"
+                        rounded-lg transition duration-300 disabled:opacity-50"
         >
           Login
         </button>

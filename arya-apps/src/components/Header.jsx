@@ -1,8 +1,12 @@
 import { FaBell, FaSearch } from "react-icons/fa";
 import { FcAreaChart } from "react-icons/fc";
 import { SlSettings } from "react-icons/sl";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Header() {
+    const { profile } = useAuth();
+    const displayName = profile?.full_name || profile?.email || "Guest";
+
     return (
         <div id="header-container">
             {/* Search Bar */}
@@ -32,7 +36,7 @@ export default function Header() {
                 {/* Profile Section */}
                 <div id="profile-container">
                     <span id="profile-text">
-                        Hello, <b>Arya Pangestu</b>
+                        Hello, <b>{displayName}</b>
                     </span>
                     <img
                         id="profile-avatar"

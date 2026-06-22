@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { MainLayout } from "./layouts/Mainlayout";
 import AuthLayout from "./layouts/AuthLayout";
 import Loading from "./components/Loading";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const Dashboard = React.lazy(() => import("./pages/main/Dashboard"));
 const Orders = React.lazy(() => import("./pages/main/Orders"));
@@ -27,14 +28,13 @@ export default function App() {
     return (
         <Suspense fallback={<Loading />}>
         <Routes>
-            <Route element={<MainLayout/>}>
+            <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetail />} /> 
-            <Route path="*" element={<NotFound />} />
             <Route path="/error-400" element={<Error400 />} />
             <Route path="/error-401" element={<Error401 />} />
             <Route path="/error-403" element={<Error403 />} />
@@ -49,6 +49,7 @@ export default function App() {
             <Route path="/register" element={<Register/>} />
             <Route path="/forgot" element={<Forgot/>} />
         </Route>
+            <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
     );
